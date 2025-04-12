@@ -38,15 +38,18 @@ namespace Cisneros_LigaPro.Controllers // Update namespace to match the project
         [HttpPost]
         public IActionResult Edit(int id, Equipo equipo)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                _equipoRepository.ActualizarEquipo(id, equipo);
-                return RedirectToAction(nameof(List));
+                return View(equipo);
             }
-            catch
+        
+            var actualizado = _equipoRepository.ActualizarEquipo(id, equipo);
+            if (!actualizado)
             {
-                return View();
+                return NotFound();
             }
+        
+            return RedirectToAction(nameof(List));
         }
         
         public IActionResult Details()

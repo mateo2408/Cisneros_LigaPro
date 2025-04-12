@@ -30,6 +30,20 @@ namespace Cisneros_LigaPro.Repositories
 
         public bool ActualizarEquipo(int id, Equipo equipo)
         {
+            var equipoExistente = _equipos.FirstOrDefault(e => e.Id == id);
+            if (equipoExistente == null)
+            {
+                return false;
+            }
+        
+            equipoExistente.Nombre = equipo.Nombre;
+            equipoExistente.PartidosJugados = equipo.PartidosJugados;
+            equipoExistente.PartidosGanados = equipo.PartidosGanados;
+            equipoExistente.PartidosEmpatados = equipo.PartidosEmpatados;
+            equipoExistente.PartidosPerdidos = equipo.PartidosPerdidos;
+            equipoExistente.Puntos = equipo.Puntos;
+            equipoExistente.Logo = equipo.Logo;
+        
             return true;
         }
 
