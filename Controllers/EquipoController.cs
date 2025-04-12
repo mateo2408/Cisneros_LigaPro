@@ -77,5 +77,17 @@ namespace Cisneros_LigaPro.Controllers // Update namespace to match the project
             }
             return View(equipo);
         }
+        
+        [HttpPost]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var eliminado = _equipoRepository.EliminarEquipo(id);
+            if (!eliminado)
+            {
+                return NotFound();
+            }
+        
+            return RedirectToAction(nameof(List));
+        }
     }
 }

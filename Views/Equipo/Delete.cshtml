@@ -1,19 +1,18 @@
-@page
-@model Cisneros_LigaPro.Views.Equipo.Delete
+@model Cisneros_LigaPro.Models.Equipo
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Eliminar Equipo";
 }
 
-<!DOCTYPE html>
+<div class="container mt-5">
+    <h2>¿Estás seguro de que deseas eliminar este equipo?</h2>
+    <p><strong>Nombre:</strong> @Model.Nombre</p>
+    <p><strong>Puntos:</strong> @Model.Puntos</p>
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-controller="Equipo" asp-action="List" class="btn btn-secondary">Cancelar</a>
+    </form>
 </div>
-</body>
-</html>

@@ -51,5 +51,16 @@ namespace Cisneros_LigaPro.Repositories
         {
             return _equipos.FirstOrDefault(e => e.Id == id) ?? throw new KeyNotFoundException($"Equipo with Id {id} not found.");
         }
+        public bool EliminarEquipo(int id)
+        {
+            var equipo = _equipos.FirstOrDefault(e => e.Id == id);
+            if (equipo == null)
+            {
+                return false;
+            }
+        
+            _equipos.Remove(equipo);
+            return true;
+        }
     }
 }
