@@ -1,0 +1,41 @@
+@model IEnumerable<Cisneros_LigaPro.Models.Equipo>
+
+@{
+    ViewData["Title"] = "Lista de Equipos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Partidos Jugados</th>
+            <th>Partidos Ganados</th>
+            <th>Partidos Empatados</th>
+            <th>Partidos Perdidos</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var equipo in Model)
+        {
+            <tr>
+                <td>@equipo.Id</td>
+                <td>@equipo.Nombre</td>
+                <td>@equipo.PartidosJugados</td>
+                <td>@equipo.PartidosGanados</td>
+                <td>@equipo.PartidosEmpatados</td>
+                <td>@equipo.PartidosPerdidos</td>
+                <td>
+                    <a asp-controller="Equipo" asp-action="Detalles" asp-route-id="@equipo.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-controller="Equipo" asp-action="Editar" asp-route-id="@equipo.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-controller="Equipo" asp-action="Eliminar" asp-route-id="@equipo.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Equipo" asp-action="Crear" class="btn btn-primary">Crear Nuevo Equipo</a>

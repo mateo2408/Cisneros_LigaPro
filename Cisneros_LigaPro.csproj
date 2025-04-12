@@ -6,9 +6,4 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Views\Equipo\InformacionEquipo.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Equipo\List.cshtml" />
-    </ItemGroup>
-
 </Project>
