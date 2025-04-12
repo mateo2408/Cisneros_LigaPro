@@ -1,32 +1,52 @@
-using Cisneros_LigaPro.Models;
 using Microsoft.AspNetCore.Mvc;
+using Cisneros_LigaPro.Repositories; // Update namespace for EquipoRepository
+using Cisneros_LigaPro.Models; // Add this to reference the Equipo class
 
-namespace Cisneros_LigaPro.Controllers;
-
-public class EquipoController : Controller
+namespace Cisneros_LigaPro.Controllers // Update namespace to match the project
 {
-    private static List<Equipo> Equipos = new List<Equipo>
+    public class EquipoController : Controller
     {
-        new Equipo { Nombre = "Equipo A", PartidosJugados = 5, PartidosGanados = 3, PartidosEmpatados = 1, PartidosPerdidos = 1 },
-        new Equipo { Nombre = "Equipo B", PartidosJugados = 5, PartidosGanados = 2, PartidosEmpatados = 2, PartidosPerdidos = 1 }
-    };
+        private readonly EquipoRepository _equipoRepository;
 
-    public IActionResult TablaPosiciones()
-    {
-        return View(Equipos);
-    }
-
-    [HttpPost]
-    public IActionResult ActualizarEquipo(Equipo equipo)
-    {
-        var equipoExistente = Equipos.FirstOrDefault(e => e.Nombre == equipo.Nombre);
-        if (equipoExistente != null)
+        public EquipoController(EquipoRepository equipoRepository)
         {
-            equipoExistente.PartidosJugados = equipo.PartidosJugados;
-            equipoExistente.PartidosGanados = equipo.PartidosGanados;
-            equipoExistente.PartidosEmpatados = equipo.PartidosEmpatados;
-            equipoExistente.PartidosPerdidos = equipo.PartidosPerdidos;
+            _equipoRepository = equipoRepository;
         }
-        return RedirectToAction("TablaPosiciones");
+
+        public IActionResult List()
+        {
+            var equipos = _equipoRepository.DevuelveListaEquipos();
+            return View(equipos);
+        }
+
+        public IActionResult Detalles(int id)
+        {
+            var equipo = _equipoRepository.ObtenerEquipoPorId(id);
+            if (equipo == null)
+            {
+                return NotFound();
+            }
+            return View(equipo);
+        }
+
+        public IActionResult Editar(int id)
+        {
+            var equipo = _equipoRepository.ObtenerEquipoPorId(id);
+            if (equipo == null)
+            {
+                return NotFound();
+            }
+            return View(equipo);
+        }
+
+        public IActionResult Eliminar(int id)
+        {
+            var equipo = _equipoRepository.ObtenerEquipoPorId(id);
+            if (equipo == null)
+            {
+                return NotFound();
+            }
+            return View(equipo);
+        }
     }
 }
