@@ -30,7 +30,7 @@
                     <td>@equipo.PartidosGanados</td>
                     <td>@equipo.PartidosEmpatados</td>
                     <td>@equipo.PartidosPerdidos</td>
-                    <td>@(equipo.PartidosGanados * 3 + equipo.PartidosEmpatados)</td>
+                    <td>@(equipo.Puntos)</td>
                     <td>
                         <a asp-controller="Equipo" asp-action="DetailsPage" asp-route-id="@equipo.Id" class="btn btn-info btn-sm">Ver Detalles</a>
                     </td>
