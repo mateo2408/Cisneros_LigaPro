@@ -30,10 +30,11 @@
                 <td>@equipo.PartidosGanados</td>
                 <td>@equipo.PartidosEmpatados</td>
                 <td>@equipo.PartidosPerdidos</td>
+                <td>@equipo.Puntos</td>
                 <td>
-                    <a asp-controller="Equipo" asp-action="Details" asp-route-id="@equipo.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-controller="Equipo" asp-action="Details" asp-route-id="@equipo.Id" class="btn btn-info btn-sm">Details</a>
                     <a asp-controller="Equipo" asp-action="Edit" asp-route-id="@equipo.Id" class="btn btn-warning btn-sm">Editar</a>
-                    <a asp-controller="Equipo" asp-action="Delet" asp-route-id="@equipo.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a asp-controller="Equipo" asp-action="Delete" asp-route-id="@equipo.Id" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
         }

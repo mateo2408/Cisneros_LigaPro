@@ -1,0 +1,43 @@
+@model IEnumerable<Cisneros_LigaPro.Models.Equipo>
+
+@{
+    ViewData["Title"] = "Información de los Equipos";
+}
+
+<div class="container mt-5">
+    <h2>@ViewData["Title"]</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Partidos Jugados</th>
+                <th>Partidos Ganados</th>
+                <th>Partidos Empatados</th>
+                <th>Partidos Perdidos</th>
+                <th>Puntos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var equipo in Model)
+            {
+                <tr>
+                    <td>@equipo.Id</td>
+                    <td>@equipo.Nombre</td>
+                    <td>@equipo.PartidosJugados</td>
+                    <td>@equipo.PartidosGanados</td>
+                    <td>@equipo.PartidosEmpatados</td>
+                    <td>@equipo.PartidosPerdidos</td>
+                    <td>@(equipo.PartidosGanados * 3 + equipo.PartidosEmpatados)</td>
+                    <td>
+                        <a asp-controller="Equipo" asp-action="DetailsPage" asp-route-id="@equipo.Id" class="btn btn-info btn-sm">Ver Detalles</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Equipo" asp-action="List" class="btn btn-secondary mt-3">Regresar</a>
+</div>

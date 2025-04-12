@@ -34,40 +34,38 @@ namespace Cisneros_LigaPro.Controllers // Update namespace to match the project
             }
             return View(equipo);
         }
+        
         [HttpPost]
-        public IActionResult Edit(Equipo equipo)
+        public IActionResult Edit(int id, Equipo equipo)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return View(equipo);
+                _equipoRepository.ActualizarEquipo(id, equipo);
+                return RedirectToAction(nameof(List));
             }
-
-            var existingEquipo = _equipoRepository.ObtenerEquipoPorId(equipo.Id);
-            if (existingEquipo == null)
+            catch
             {
-                return NotFound();
+                return View();
             }
-            
-            existingEquipo.Nombre = equipo.Nombre;
-            existingEquipo.PartidosJugados = equipo.PartidosJugados;
-            existingEquipo.PartidosGanados = equipo.PartidosGanados;
-            existingEquipo.PartidosEmpatados = equipo.PartidosEmpatados;
-            existingEquipo.PartidosPerdidos = equipo.PartidosPerdidos;
-
-            return RedirectToAction("List");
         }
         
-        public IActionResult Details(int id)
+        public IActionResult Details()
         {
-            var equipo = _equipoRepository.ObtenerEquipoPorId(id);
-            if (equipo == null)
-            {
-                return NotFound();
-            }
-            return View(equipo);
-        }
+             var equipos = _equipoRepository.DevuelveListaEquipos();
+            return View(equipos);
+         }
+        
+     public IActionResult DetailsPage(int id)
+     {
+         var equipo = _equipoRepository.ObtenerEquipoPorId(id);
+         if (equipo == null)
+         {
+             return NotFound();
+         }
+         return View(equipo);
+     }
 
-        public IActionResult Delet(int id)
+        public IActionResult Delete(int id)
         {
             var equipo = _equipoRepository.ObtenerEquipoPorId(id);
             if (equipo == null)

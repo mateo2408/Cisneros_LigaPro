@@ -24,4 +24,9 @@ public class Equipo
 
     [Range(0, 100)]
     public int PartidosPerdidos { get; set; }
+    
+    [Range(0, 100)]
+    public int Puntos  { get; set; }
+    
+    public string? Logo { get; set; }
 }

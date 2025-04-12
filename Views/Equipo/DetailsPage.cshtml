@@ -1,0 +1,34 @@
+@model Cisneros_LigaPro.Models.Equipo
+
+@{
+    ViewData["Title"] = "Detalles del Equipo";
+}
+
+<div class="container mt-5">
+    <h2>@Model.Nombre</h2>
+    <img src=@Model.Logo alt="Logo de @Model.Nombre" class="img-fluid mb-3" style="max-width: 200px;">
+    <p><strong>Descripción:</strong> Este es un equipo destacado de la Liga Pro de Ecuador.</p>
+
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Partidos Jugados</th>
+                <th>Partidos Ganados</th>
+                <th>Partidos Empatados</th>
+                <th>Partidos Perdidos</th>
+                <th>Puntos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.PartidosJugados</td>
+                <td>@Model.PartidosGanados</td>
+                <td>@Model.PartidosEmpatados</td>
+                <td>@Model.PartidosPerdidos</td>
+                <td>@(Model.PartidosGanados * 3 + Model.PartidosEmpatados)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Equipo" asp-action="Details" class="btn btn-secondary mt-3">Regresar</a>
+</div>

@@ -12,13 +12,13 @@ namespace Cisneros_LigaPro.Repositories
             {
                 new Equipo
                 {
-                    Id = 1, Nombre = "Liga de Quito", PartidosJugados = 10, PartidosGanados = 10, PartidosEmpatados = 0,
-                    PartidosPerdidos = 0
+                    Id = 1, Nombre = "Liga de Quito",Puntos = 30, PartidosJugados = 10, PartidosGanados = 10, PartidosEmpatados = 0,
+                    PartidosPerdidos = 0, Logo = "/images/equipo_1.png"
                 },
                 new Equipo
                 {
-                    Id = 2, Nombre = "Barcelona SC", PartidosJugados = 12, PartidosGanados = 8, PartidosEmpatados = 2,
-                    PartidosPerdidos = 2
+                    Id = 2, Nombre = "Barcelona SC",Puntos = 10, PartidosJugados = 12, PartidosGanados = 8, PartidosEmpatados = 2,
+                    PartidosPerdidos = 2, Logo = "/images/equipo_2.png"
                 }
             };
         }
@@ -26,6 +26,11 @@ namespace Cisneros_LigaPro.Repositories
         public IEnumerable<Equipo> DevuelveListaEquipos()
         {
             return _equipos;
+        }
+
+        public bool ActualizarEquipo(int id, Equipo equipo)
+        {
+            return true;
         }
 
         public Equipo ObtenerEquipoPorId(int id)
