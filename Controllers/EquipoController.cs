@@ -25,7 +25,39 @@ namespace Cisneros_LigaPro.Controllers // Update namespace to match the project
             return View(equipo);
         }
         
-        public IActionResult Detalles(int id)
+        public IActionResult Edit(int id)
+        {
+            var equipo = _equipoRepository.ObtenerEquipoPorId(id);
+            if (equipo == null)
+            {
+                return NotFound();
+            }
+            return View(equipo);
+        }
+        [HttpPost]
+        public IActionResult Edit(Equipo equipo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(equipo);
+            }
+
+            var existingEquipo = _equipoRepository.ObtenerEquipoPorId(equipo.Id);
+            if (existingEquipo == null)
+            {
+                return NotFound();
+            }
+            
+            existingEquipo.Nombre = equipo.Nombre;
+            existingEquipo.PartidosJugados = equipo.PartidosJugados;
+            existingEquipo.PartidosGanados = equipo.PartidosGanados;
+            existingEquipo.PartidosEmpatados = equipo.PartidosEmpatados;
+            existingEquipo.PartidosPerdidos = equipo.PartidosPerdidos;
+
+            return RedirectToAction("List");
+        }
+        
+        public IActionResult Details(int id)
         {
             var equipo = _equipoRepository.ObtenerEquipoPorId(id);
             if (equipo == null)
@@ -35,17 +67,7 @@ namespace Cisneros_LigaPro.Controllers // Update namespace to match the project
             return View(equipo);
         }
 
-        public IActionResult Editar(int id)
-        {
-            var equipo = _equipoRepository.ObtenerEquipoPorId(id);
-            if (equipo == null)
-            {
-                return NotFound();
-            }
-            return View(equipo);
-        }
-
-        public IActionResult Eliminar(int id)
+        public IActionResult Delet(int id)
         {
             var equipo = _equipoRepository.ObtenerEquipoPorId(id);
             if (equipo == null)
