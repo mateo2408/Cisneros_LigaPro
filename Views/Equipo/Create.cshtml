@@ -1,0 +1,37 @@
+@model Cisneros_LigaPro.Models.Equipo
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2>Crear Nuevo Equipo</h2>
+    <form asp-action="Create" method="post" class="mt-4">
+        <div class="form-group">
+            <label asp-for="Nombre" class="form-label">Nombre del Equipo</label>
+            <input asp-for="Nombre" class="form-control" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-3">
+            <label asp-for="PartidosJugados" class="form-label">Partidos Jugados</label>
+            <input asp-for="PartidosJugados" class="form-control" type="number" />
+            <span asp-validation-for="PartidosJugados" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-3">
+            <label asp-for="PartidosGanados" class="form-label">Partidos Ganados</label>
+            <input asp-for="PartidosGanados" class="form-control" type="number" />
+            <span asp-validation-for="PartidosGanados" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-3">
+            <label asp-for="PartidosEmpatados" class="form-label">Partidos Empatados</label>
+            <input asp-for="PartidosEmpatados" class="form-control" type="number" />
+            <span asp-validation-for="PartidosEmpatados" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-3">
+            <label asp-for="PartidosPerdidos" class="form-label">Partidos Perdidos</label>
+            <input asp-for="PartidosPerdidos" class="form-control" type="number" />
+            <span asp-validation-for="PartidosPerdidos" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Crear</button>
+    </form>
+</div>

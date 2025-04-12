@@ -1,6 +1,6 @@
-using Cisneros_LigaPro.Models; // Add this to reference the Equipo class
+using Cisneros_LigaPro.Models; 
 
-namespace Cisneros_LigaPro.Repositories // Update namespace to match the project
+namespace Cisneros_LigaPro.Repositories
 {
     public class EquipoRepository
     {

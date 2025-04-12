@@ -18,7 +18,13 @@ namespace Cisneros_LigaPro.Controllers // Update namespace to match the project
             var equipos = _equipoRepository.DevuelveListaEquipos();
             return View(equipos);
         }
-
+        
+        public IActionResult Create()
+        {
+            var equipo = new Equipo();
+            return View(equipo);
+        }
+        
         public IActionResult Detalles(int id)
         {
             var equipo = _equipoRepository.ObtenerEquipoPorId(id);
