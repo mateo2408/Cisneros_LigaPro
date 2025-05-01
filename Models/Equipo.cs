@@ -12,6 +12,9 @@ public class Equipo
     [MaxLength(100)]
     [DisplayName("Nombre del equipo")]
     public string Nombre { get; set; }
+    
+    public decimal Presupuesto { get; set; }
+    public string Descripcion { get; set; }
 
     [Range(0, 100)]
     public int PartidosJugados { get; set; }

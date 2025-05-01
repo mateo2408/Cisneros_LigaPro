@@ -1,4 +1,6 @@
+using Cisneros_LigaPro.Data;
 using Cisneros_LigaPro.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,8 @@ builder.Services.AddControllersWithViews();
 
 // Register EquipoRepository
 builder.Services.AddScoped<EquipoRepository>();
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
