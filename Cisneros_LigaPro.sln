@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cisneros_LigaPro", "Cisneros_LigaPro.csproj", "{222ADB5B-8DF5-4DBC-B286-682745D69B13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grupo5_LigaPro", "Grupo5_LigaPro.csproj", "{222ADB5B-8DF5-4DBC-B286-682745D69B13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
